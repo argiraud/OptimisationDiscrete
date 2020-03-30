@@ -51,6 +51,7 @@ public class Main {
             }
             route.add(new Arrete(clientActuel, depot, getDistance(clientActuel, depot)));
             routes.add(route);
+            System.out.println(route.toString());
         }
         return routes;
     }
