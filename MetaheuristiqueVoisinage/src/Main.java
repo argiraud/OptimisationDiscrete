@@ -1,3 +1,4 @@
+import java.awt.geom.Point2D;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,13 +8,14 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        List<Client> clients = dataFileToCLientList("Ressources/data01.txt");
-        List<Route> routes = routesCreation(clients, 100);
+        //List<Client> clients = dataFileToCLientList("Ressources/data01.txt");
+        ArrayList<Client> client2 = dataFileToCLientList("Ressources/data01.txt");
+        List<Route> routes = routesCreation(client2, 100);
         System.out.println("test");
     }
 
-    private static List<Client> dataFileToCLientList(String filename) throws IOException {
-        List<Client> clients = new ArrayList<>();
+    private static ArrayList<Client> dataFileToCLientList(String filename) throws IOException {
+        ArrayList<Client> clients = new ArrayList<>();
         File file = new File(filename);
         Scanner sc = new Scanner(file);
         sc.useDelimiter("\n");
@@ -28,7 +30,7 @@ public class Main {
         return clients;
     }
 
-    private static List<Route> routesCreation(List<Client> clients, int chargeMax) throws IOException {
+    private static List<Route> routesCreation(ArrayList<Client> clients, int chargeMax) throws IOException {
         List<Route> routes = new ArrayList<>();
         Random r = new Random();
         Client depot = clients.get(0);

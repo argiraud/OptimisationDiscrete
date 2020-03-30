@@ -11,6 +11,10 @@ public class Route {
         return arretes;
     }
 
+    public Arrete getArretesById(int i) {
+        return arretes.get(i);
+    }
+
     public void setArretes(List<Arrete> arretes) {
         this.arretes = arretes;
     }
@@ -21,6 +25,10 @@ public class Route {
 
     public double getDistanceTotal(){
        return arretes.stream().mapToDouble(Arrete::getDistance).sum();
+    }
+
+    public int size(){
+        return this.size();
     }
 
     @Override

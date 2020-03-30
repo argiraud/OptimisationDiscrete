@@ -42,4 +42,8 @@ public class Client {
     public void setQuantite(Integer quantite) {
         this.quantite = quantite;
     }
+
+    public double getDistance(Client client1, Client client2) {
+        return Math.sqrt(Math.pow((client2.getX() - client1.getX()), 2) + Math.pow((client2.getY() - client1.getY()), 2));
+    }
 }
