@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         System.out.println("Hello Maxime");
         List<Client> clients = dataFileToCLientList("Ressources/data01.txt");
-        List<List<Arrete>> routes = routesCreation (clients, 10);
+        List<List<Arrete>> routes = routesCreation (clients, 30);
         System.out.println("test");
     }
 
@@ -32,20 +32,24 @@ public class Main {
     private static List<List<Arrete>> routesCreation(List<Client> clients, int chargeMax) throws IOException {
         List<List<Arrete>> routes = new ArrayList<>();
         Random r = new Random();
-        int chargeActuelle = 0;
+        Client depot = clients.get(0);
+        clients.remove(0);
         while (clients.size() > 1) {
+            int chargeActuelle = 0;
             List<Arrete> route = new ArrayList<>();
-            int i = r.nextInt(clients.size() - 2) + 1;
+            int i = r.nextInt(clients.size());
             Client clientActuel = clients.get(i);
-            route.add(new Arrete(clients.get(0), clientActuel, getDistance(clients.get(0), clientActuel)));
+            chargeActuelle = chargeActuelle + clientActuel.getQuantite();
+            route.add(new Arrete(depot, clientActuel, getDistance(depot, clientActuel)));
             clients.remove(i);
             while (chargeActuelle < chargeMax) {
-                i = r.nextInt(clients.size() - 2) + 1;
-                route.add(new Arrete(clientActuel, clients.get(i), getDistance(clientActuel, clients.get(i))));
-                clientActuel = clients.get(i);
-                clients.remove(i);
+                i = r.nextInt(clients.size());
+                    route.add(new Arrete(clientActuel, clients.get(i), getDistance(clientActuel, clients.get(i))));
+                    clientActuel = clients.get(i);
+                    chargeActuelle = chargeActuelle + clientActuel.getQuantite();
+                    clients.remove(i);
             }
-            route.add(new Arrete(clientActuel, clients.get(0), getDistance(clientActuel, clients.get(0))));
+            route.add(new Arrete(clientActuel, depot, getDistance(clientActuel, depot)));
             routes.add(route);
         }
         return routes;
