@@ -7,9 +7,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        System.out.println("Hello Maxime");
         List<Client> clients = dataFileToCLientList("Ressources/data01.txt");
-        List<List<Arrete>> routes = routesCreation(clients, 100);
+        List<Route> routes = routesCreation(clients, 100);
         System.out.println("test");
     }
 
@@ -29,27 +28,27 @@ public class Main {
         return clients;
     }
 
-    private static List<List<Arrete>> routesCreation(List<Client> clients, int chargeMax) throws IOException {
-        List<List<Arrete>> routes = new ArrayList<>();
+    private static List<Route> routesCreation(List<Client> clients, int chargeMax) throws IOException {
+        List<Route> routes = new ArrayList<>();
         Random r = new Random();
         Client depot = clients.get(0);
         clients.remove(0);
         while (clients.size() > 1) {
             int chargeActuelle = 0;
-            List<Arrete> route = new ArrayList<>();
+            Route route = new Route(new ArrayList<>());
             int i = r.nextInt(clients.size());
             Client clientActuel = clients.get(i);
             chargeActuelle = chargeActuelle + clientActuel.getQuantite();
-            route.add(new Arrete(depot, clientActuel, getDistance(depot, clientActuel)));
+            route.addArrete(new Arrete(depot, clientActuel, getDistance(depot, clientActuel)));
             clients.remove(i);
             while (chargeActuelle < chargeMax && clients.size() > 1) {
                 i = r.nextInt(clients.size());
-                route.add(new Arrete(clientActuel, clients.get(i), getDistance(clientActuel, clients.get(i))));
+                route.addArrete(new Arrete(clientActuel, clients.get(i), getDistance(clientActuel, clients.get(i))));
                 clientActuel = clients.get(i);
                 chargeActuelle = chargeActuelle + clientActuel.getQuantite();
                 clients.remove(i);
             }
-            route.add(new Arrete(clientActuel, depot, getDistance(clientActuel, depot)));
+            route.addArrete(new Arrete(clientActuel, depot, getDistance(clientActuel, depot)));
             routes.add(route);
             System.out.println(route.toString());
         }
