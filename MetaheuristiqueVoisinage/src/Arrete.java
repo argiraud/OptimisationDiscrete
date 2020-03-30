@@ -32,4 +32,13 @@ public class Arrete {
     public void setDistance(double distance) {
         this.distance = distance;
     }
+
+    @Override
+    public String toString() {
+        return "Arrete{" +
+                "clientInitial=" + clientInitial +
+                ", clientFinal=" + clientFinal +
+                ", distance=" + distance +
+                '}';
+    }
 }

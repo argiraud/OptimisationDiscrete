@@ -42,4 +42,14 @@ public class Client {
     public void setQuantite(Integer quantite) {
         this.quantite = quantite;
     }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", x=" + x +
+                ", y=" + y +
+                ", quantite=" + quantite +
+                '}';
+    }
 }

@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         System.out.println("Hello Maxime");
         List<Client> clients = dataFileToCLientList("Ressources/data01.txt");
-        List<List<Arrete>> routes = routesCreation (clients, 30);
+        List<List<Arrete>> routes = routesCreation(clients, 30);
         System.out.println("test");
     }
 
@@ -44,10 +44,10 @@ public class Main {
             clients.remove(i);
             while (chargeActuelle < chargeMax) {
                 i = r.nextInt(clients.size());
-                    route.add(new Arrete(clientActuel, clients.get(i), getDistance(clientActuel, clients.get(i))));
-                    clientActuel = clients.get(i);
-                    chargeActuelle = chargeActuelle + clientActuel.getQuantite();
-                    clients.remove(i);
+                route.add(new Arrete(clientActuel, clients.get(i), getDistance(clientActuel, clients.get(i))));
+                clientActuel = clients.get(i);
+                chargeActuelle = chargeActuelle + clientActuel.getQuantite();
+                clients.remove(i);
             }
             route.add(new Arrete(clientActuel, depot, getDistance(clientActuel, depot)));
             routes.add(route);
