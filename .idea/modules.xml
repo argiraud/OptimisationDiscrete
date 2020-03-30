@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MetaheuristiquePopulation/MetaheuristiquePopulation.iml" filepath="$PROJECT_DIR$/MetaheuristiquePopulation/MetaheuristiquePopulation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MetaheuristiqueVoisinage/MetaheuristiqueVoisinage.iml" filepath="$PROJECT_DIR$/MetaheuristiqueVoisinage/MetaheuristiqueVoisinage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Vrai projet.iml" filepath="$PROJECT_DIR$/.idea/Vrai projet.iml" />
+    </modules>
+  </component>
+</project>
